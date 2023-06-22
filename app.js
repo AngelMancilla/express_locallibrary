@@ -3,7 +3,6 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-const config = require("./config");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -23,7 +22,7 @@ const limiter = RateLimit({
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = process.env.MONGODB_URI || config.mongoDB;
+const mongoDB = process.env.MONGODB_URI;
 
 main().catch((err) => console.log(err));
 async function main() {
